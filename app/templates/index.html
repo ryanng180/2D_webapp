@@ -1,0 +1,144 @@
+<html>
+    <head>
+        <title>{{title}}</title>
+        <script type = "text/javascript">
+            if (!("/x".includes(document.location.toString().slice(-1)))) document.location += "/"
+        </script>
+        <style>    
+            .date-picker {
+                display: flex;
+                gap: 20px;
+            }
+            .collapsible {
+                background-color: #777;
+                color: white;
+                cursor: pointer;
+                padding: 18px;
+                width: 100%;
+                border: none;
+                text-align: left;
+                outline: none;
+                font-size: 15px;
+                }
+
+            .active, .collapsible:hover {
+                background-color: #555;
+                }
+
+            .content {
+                padding: 0 18px;
+                display: none;
+                overflow: hidden;
+                background-color: #f1f1f1;
+                }
+        </style>
+    </head>
+    <body>
+        <h1>2D Beasts</h1>
+        <p>
+        	Problem statement: How might we predict the —target— of a country during a pandemic given its —features—?
+        </p>
+        <h2>Pandemics</h2>
+        <ul>
+            <li>1968-1970 Hong Kong Flu (1-4 million deaths worldwide)</li>
+            <li>2002-2003 SARS (774 deaths)</li>
+            <li>2009-2010 Swine Flu (150000-25000 deaths, 10% population affected)</li>
+            <li>2019-ongoing Covid-19 (>4 million deaths, >190 million confirmed cases)</li>
+        </ul>
+        <h2>Target</h2>
+        <ul>
+            <li>Food Prices/Rise in food prices (absolute value or percentage)</li>
+            <li>Food production/Food production Indices</li>
+            <li>No. of food insecure people</li>
+            <li>Undernourishment </li>
+        </ul>
+        <h2>Features</h2>
+        <ul>
+            <li>Population size</li>
+            <li>Geographical location</li>
+            <li>Political Stability</li>
+            <li>GDP/GNI per capita</li>
+            <li>Temperature change on land</li>
+        </ul>
+        
+        <h3>World's fastest and most accurate pandemic calculator</h3>
+        <p>Enter your </p>
+        <button type="button" class="collapsible">Click to select Country and Date</button>
+        <div class="content">
+            <div>
+                <table>
+                    <th></th>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label for="dropdown">Country:</label>
+                                <select id="dropdown">
+                                    <option value="option1">Option 1</option>
+                                    <option value="option2">Option 2</option>
+                                    <option value="option3">Option 3</option>
+                                    <option value="option4">Option 4</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <form action="/action_page.php">
+                                    <div class="date-picker">
+                                        <label for="from">From:</label>
+                                        <input type="date" id="from" name="from">
+                                        <label for="to">to:</label>
+                                        <input type="date" id="to" name="to">
+                                        <input type="submit">
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ul>
+                                    <li>1968-1970 Hong Kong Flu (1-4 million deaths worldwide)</li>
+                                    <li>2002-2003 SARS (774 deaths)</li>
+                                    <li>2009-2010 Swine Flu (150000-25000 deaths, 10% population affected)</li>
+                                    <li>2019-ongoing Covid-19 (>4 million deaths, >190 million confirmed cases)</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <button type="button" class="collapsible">Click to select Features</button>
+        <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <button type="button" class="collapsible">Click to select Target</button>
+        <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var coll = document.getElementsByClassName("collapsible");
+                var content = document.getElementsByClassName("content");
+        
+                for (var i = 0; i < coll.length; i++) {
+                    coll[i].addEventListener("click", function() {
+                        var currentContent = this.nextElementSibling;
+                        for (var j = 0; j < content.length; j++) {
+                            if (content[j] !== currentContent) {
+                                content[j].style.display = "none";
+                            }
+                        }
+                        currentContent.style.display === "block" ?
+                            currentContent.style.display = "none" :
+                            currentContent.style.display = "block";
+                    });
+                }
+        
+                // Trigger click event on the first collapsible after page load
+                coll[0].click();
+            });
+        </script>
+        
+    </body>
+</html>
