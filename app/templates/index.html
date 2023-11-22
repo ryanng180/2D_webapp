@@ -8,15 +8,17 @@
 <body>
   <div class="container">
     <h1>Pandemic Food security predictor</h1>
+    <p style="background-color: lightgray;padding-top: 10px; padding-bottom: 10px;"><b>Instructions</b>: select your Context, Predictor Variables and click the Calculate button to use</p>
+    <h2>Context</h2>
     <form id="pandemicForm">
         <div class="">
             <label for="pandemic">Pandemic</label>
             <select id="pandemicSelect" name="pandemic">
                 <option value="Default"></option>
-                <option value="Covid">Covid19</option>
+                <option value="Covid">Covid</option>
             </select>
         </div>
-        <div class="">
+        <div class="container">
             <label for="country">Country</label>
             <select id="countrySelect" name="countries">
                 <option value="Default"></option>
@@ -130,9 +132,9 @@
             </select>
         </div>
         <br>
+        <h2>Predictor Variables</h2>
         <div class="input-group">
             <div class="factor-group">
-              <h2>Predictor Variables</h2>
               <h3>Social variables</h3>
               <label><input type="checkbox" name="socialFactors" value="HDI"> Human Development Index (HDI)</label><br>
               <label><input type="checkbox" name="socialFactors" value="TotalPopulation"> Total Population in the Country</label><br>
@@ -163,49 +165,34 @@
     
         <div class="result" id="result">
           <h2>Result</h2>
-          <p>Graph. prevalence of moderate or severe food insecurity in the population against selected factors</p>
-          <p>Lightly | Moderate | Severe</p>
+          <p>Graph. prevalence of moderate or severe food insecurity in the population against selected Predicted Variables</p>
+          <p>Moderate | Severe</p>
         </div>
 
-        <div class="container">
+        <div class="information">
           <h3>What is the Pandemic Food security predictor?</h3>
-          <p>Our model is able to predict the Prevalence of Food Insecurity within the country in the time of a pandemic based on the Human Development Index and Total Population of the country. This allows the countries to prepare for the extent of impact that the pandemic has on their food security issue, allowing them to act quickly with the knowledge that they would be faced with a greater probability of Food Insecurity should they have a lower HDI score and a smaller Population.</p>
+          <p>The Pandemic Food security predictor predicts the Prevalence of Food Insecurity within the country in the time of a pandemic. It is most accurate when based on the Human Development Index and Total Population of the country.</p>
+          <p>This allows the countries to prepare for the extent of impact that the pandemic has on their food security issue, allowing them to act swiftly and accurately.</p>
           <h3>Problem Statement Introduction</h3>
           <p><b>How might we predict the prevalence of food insecurity within a country amid a pandemic, given the country’s social, political, and economic factors?</b></p>
-          <h3>Background</h3>
-          <p>Despite the rapid advancements of society, food security remains a persistent challenge for many countries globally. Food security is defined as the ability of an individual to access food that is nutritious and sufficient in quantity. What makes ensuring an adequate supply of safe and nutritious food available for all so difficult is its vulnerability to a multitude of factors, some man-made, others natural. Pandemics, for example, exacerbate the issue as they bring about many disruptions in the livelihood of individuals.
-            More specifically in the recent COVID-19 pandemic, ensuring food security was one of the main challenges that countries have to deal with. Socio-economic factors such as political stability, population density, agricultural land, and unemployment rate exert varying degrees of influence on different countries. 
-            As such, our group aims to model these socio-economic factors, coupled with the Human Development Index to determine their impact on the number of individuals facing food insecurity in times of a pandemic, specifically in the year 2020.
-            This model would allow countries to predict the extent of the impact that the pandemic has on their nation. If a country’s food security situation is greatly affected in the event of a pandemic, more resources should be allocated to address this issue. This would hence promote the efficient allocation of resources and manpower towards addressing the most critical issues, maximizing the effectiveness of their interventions. 
-            </p>
-          <h3>Correlation strength of Predictor variables to Response Variable</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit sequi natus, commodi provident omnis non, modi quam temporibus quibusdam eum possimus magni assumenda blanditiis tempora tenetur explicabo? Odit, autem est!</p>
+          <p>We aim to categorize this prediction either as <b>Moderate</b> or <b>Severe</b>. This classification allows us to assess the anticipated level of food insecurity within a nation by considering its social, political, and economic landscape amidst a pandemic, offering insight into the likely severity of food insecurity based on their specific socio-political-economic conditions.</p>
+          <h3>Limitations of Model</h3>
+          <p>From the analysis process, we were also able to conclude that not all factors will have an impact on the food security of a country. Many factors that we’ve initially considered turned out to be ineffective in modelling the correlation between the predictor and response variables due to the lack of correlation between them. </p>
+          <p>As such, we’ve narrowed down to just two predictor variables in our multi-regression line, which are HDI and Total population of a country.</p>
+          <p>However, even after identifying the appropriate predictor variables, we have to also note that there are other considerations involved when using the model in decision-making. For example, we have to note that the Human Development Index is based on multiple dimensions and countries with high HDI will likely always be food secure.</p>
+          <p>A possible improvement for future models is that we only take into account countries below a specific range of HDI as these are the countries that are more prone to food insecurity in times of a pandemic.</p>
           <h3>Conclusion</h3>
-          <p>After a series of optimization and filtering, our model can be used to effectively predict the extent of impact that HDI, political stability and temperature change has on the number of individuals experiencing food insecurity in times of a pandemic. 
-            This model also allows countries to determine how vulnerable they are to food insecurity, allowing governments to put into place sufficient measures to better prepare themselves in the event of a pandemic. Such measures can be improving infrastructure by leveraging on technological advancements to increase crop growth and yield, ensuring sufficient stockpile to ensure stability in the availability and price of food as well as diversifying supply. On the other hand, for countries whose food security is minimally impacted, governments can focus their efforts and resources into addressing other challenges that are more crucial.
-            From the analysis process, we were also able to conclude that not all factors will have an impact on the food security of a country. Many factors that we’ve initially considered turned out to be ineffective in modelling the correlation between the predictor and response variables due to the lack of correlation between them. As such, we’ve narrowed down to just two predictor variables in our multi-regression line, which are HDI and Total population of a country. 
-            However, even after identifying the appropriate predictor variables, we have to also note that there are other considerations involved when using the model in decision-making. For example, we have to note that the Human Development Index is based on multiple dimensions and countries with high HDI will likely always be food secure. As such, a possible improvement for future models is that we only take into account countries below a specific range of HDI as these are the countries that are more prone to food insecurity in times of a pandemic
-            As such, while our model may be limited in its ability to give the exact number of people experiencing food insecurity in a country during a pandemic, it is still able to give an accurate prediction on the extent of impact that the pandemic will have on their food security based on their HDI and Total population. 
-            </p>
+          <p>As such, while our model may be limited in its ability to give the exact number of people experiencing food insecurity in a country during a pandemic, it is still able to give an accurate prediction on the extent of impact that the pandemic will have on their food security based on their HDI and Total population in the country.</p>
+          <h3>Sources</h3>
+          <ul>
+            <li><a href="https://www.fao.org/sustainable-development-goals-data-portal/data/indicators/212-prevalence-of-moderate-or-severe-food-insecurity-in-the-population-based-on-the-food-insecurity-experience-scale/en">Source 1: FAO</a></li>
+            <li><a href="https://hdr.undp.org/data-center/human-development-index#/indicies/HDI">Source 2: HDI</a></li>
+            <li><a href="https://www.fao.org/faostat/en/#data/OA">Source 3: Total Population</a></li>
+            <li><a href="https://tradingeconomics.com/country-list/unemployment-rate">Source 4: Unemployment Rate</a></li>
+            <li><a href="https://data.apps.fao.org/catalog/dataset/06b37520-56c5-4bf6-ae0e-28bebb959139/resource/698fc234-6fb6-44ba-84f7-360a347643f2">Source 5: Political Stability</a></li>
+            <li><a href="https://www.fao.org/3/cb9572en/cb9572en.pdf">Source 6: GDP</a></li>
+            <li><a href="https://www.fao.org/faostat/en/#data/RL">Source 7: Agricultural Land</a></li>
+          </ul>
         </div>
-
-    <script>
-        function calculate() {
-            // Add your calculation logic here
-            // This function can perform actions based on the selected checkboxes
-            // For example, retrieve the selected values and process them
-            // This is a placeholder function for your specific calculation
-            // You can use JavaScript to perform the calculations
-            console.log("Calculating...");
-        }
-
-        function clearSelections() {
-            // Clear all checkbox selections
-            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach(function(checkbox) {
-            checkbox.checked = false;
-            });
-        }
-    </script>
 
 </body>
