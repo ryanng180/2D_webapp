@@ -2,211 +2,197 @@
 <head>
   <meta charset="UTF-8">
   <title>Pandemic Food Security Predictor</title>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-  <script>
-    function calculateSeverity() {
-        var country = document.getElementById("country").value;
-        var severe_or_low;
-        if (country === "Japan") {
-            severe_or_low = "low";
-        } else if (country === "Angola") {
-            severe_or_low = "severe";
-        } else {
-            severe_or_low = "Unknown";
-        }
-        document.getElementById("result").innerHTML = severe_or_low;
-    }
-  </script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <div class="container">
-    <h1>Pandemic Food security predictor</h1>
-    <p style="background-color: lightgray;padding-top: 10px; padding-bottom: 10px;"><b>Instructions</b>: select your Context, Predictor Variables and click the Calculate button to use</p>
-    <h2>Context</h2>
-    <form id="pandemicForm">
-        <div class="">
-            <label for="pandemic">Pandemic</label>
-            <select id="pandemicSelect" name="pandemic">
-                <option value="Default"></option>
-                <option value="Covid">Covid</option>
-            </select>
-        </div>
-        <div class="container">
-            <label for="Country">Country</label>
-            <select id="Country" name="Country">
-                <option value="Default"></option>
-                <option value="Afghanistan">Afghanistan</option>
-                <option value="Albania">Albania</option>
-                <option value="Algeria">Algeria</option>
-                <option value="Andorra">Andorra</option>
-                <option value="Angola">Angola</option>
-                <option value="Antigua and Barbuda">Antigua and Barbuda</option>
-                <option value="Argentina">Argentina</option>
-                <option value="Armenia">Armenia</option>
-                <option value="Australia">Australia</option>
-                <option value="Austria">Austria</option>
-                <option value="Azerbaijan">Azerbaijan</option>
-                <option value="Bahamas">Bahamas</option>
-                <option value="Bahrain">Bahrain</option>
-                <option value="Bangladesh">Bangladesh</option>
-                <option value="Barbados">Barbados</option>
-                <option value="Belarus">Belarus</option>
-                <option value="Belgium">Belgium</option>
-                <option value="Belize">Belize</option>
-                <option value="Benin">Benin</option>
-                <option value="Bhutan">Bhutan</option>
-                <option value="Bolivia">Bolivia</option>
-                <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
-                <option value="Botswana">Botswana</option>
-                <option value="Brazil">Brazil</option>
-                <option value="Brunei Darussalam">Brunei Darussalam</option>
-                <option value="Bulgaria">Bulgaria</option>
-                <option value="Burkina Faso">Burkina Faso</option>
-                <option value="Burundi">Burundi</option>
-                <option value="Cabo Verde">Cabo Verde</option>
-                <option value="Cambodia">Cambodia</option>
-                <option value="Cameroon">Cameroon</option>
-                <option value="Canada">Canada</option>
-                <option value="Central African Republic">Central African Republic</option>
-                <option value="Chad">Chad</option>
-                <option value="Chile">Chile</option>
-                <option value="China">China</option>
-                <option value="Colombia">Colombia</option>
-                <option value="Comoros">Comoros</option>
-                <option value="Congo">Congo</option>
-                <option value="Costa Rica">Costa Rica</option>
-                <option value="Croatia">Croatia</option>
-                <option value="Cuba">Cuba</option>
-                <option value="Cyprus">Cyprus</option>
-                <option value="Czech Republic">Czech Republic</option>
-                <option value="Côte d'Ivoire">Côte d'Ivoire</option>
-                <option value="Democratic People's Republic of Korea">Democratic People's Republic of Korea</option>
-                <option value="Democratic Republic of the Congo">Democratic Republic of the Congo</option>
-                <option value="Denmark">Denmark</option>
-                <option value="Djibouti">Djibouti</option>
-                <option value="Dominica">Dominica</option>
-                <option value="Dominican Republic">Dominican Republic</option>
-                <option value="Ecuador">Ecuador</option>
-                <option value="Egypt">Egypt</option>
-                <option value="El Salvador">El Salvador</option>
-                <option value="Equatorial Guinea">Equatorial Guinea</option>
-                <option value="Eritrea">Eritrea</option>
-                <option value="Estonia">Estonia</option>
-                <option value="Eswatini">Eswatini</option>
-                <option value="Ethiopia">Ethiopia</option>
-                <option value="Fiji">Fiji</option>
-                <option value="Finland">Finland</option>
-                <option value="France">France</option>
-                <option value="Gabon">Gabon</option>
-                <option value="Gambia">Gambia</option>
-                <option value="Georgia">Georgia</option>
-                <option value="Germany">Germany</option>
-                <option value="Ghana">Ghana</option>
-                <option value="Greece">Greece</option>
-                <option value="Grenada">Grenada</option>
-                <option value="Guatemala">Guatemala</option>
-                <option value="Guinea">Guinea</option>
-                <option value="Guinea-Bissau">Guinea-Bissau</option>
-                <option value="Guyana">Guyana</option>
-                <option value="Haiti">Haiti</option>
-                <option value="Honduras">Honduras</option>
-                <option value="Hungary">Hungary</option>
-                <option value="Iceland">Iceland</option>
-                <option value="India">India</option>
-                <option value="Indonesia">Indonesia</option>
-                <option value="Iran (Islamic Republic of)">Iran (Islamic Republic of)</option>
-                <option value="Iraq">Iraq</option>
-                <option value="Ireland">Ireland</option>
-                <option value="Israel">Israel</option>
-                <option value="Italy">Italy</option>
-                <option value="Jamaica">Jamaica</option>
-                <option value="Japan">Japan</option>
-                <option value="Jordan">Jordan</option>
-                <option value="Kazakhstan">Kazakhstan</option>
-                <option value="Kenya">Kenya</option>
-                <option value="Kiribati">Kiribati</option>
-                <option value="Kuwait">Kuwait</option>
-                <option value="Kyrgyzstan">Kyrgyzstan</option>
-                <option value="Lao People's Democratic Republic">Lao People's Democratic Republic</option>
-                <option value="Latvia">Latvia</option>
-                <option value="Lebanon">Lebanon</option>
-                <option value="Lesotho">Lesotho</option>
-                <option value="Liberia">Liberia</option>
-                <option value="Libya">Libya</option>
-                <option value="Liechtenstein">Liechtenstein</option>
-                <option value="Lithuania">Lithuania</option>
-                <option value="Luxembourg">Luxembourg</option>
-                <option value="Madagascar">Madagascar</option>
-                <option value="Malawi">Malawi</option>
-                <option value="Malaysia">Malaysia</option>
-                <option value="Maldives">Maldives</option>
-                <option value="Mali">Mali</option>
-                <option value="Malta">Malta</option>                  
-            </select>
-        </div>
-        <br>
-        <h2>Predictor Variables</h2>
-        <div class="input-group">
-            <div class="factor-group">
-              <h3>Social variables</h3>
-              <label><input type="checkbox" name="socialFactors" id="HDI"> Human Development Index (HDI)</label><br>
-              <label><input type="checkbox" name="socialFactors" id="TotalPopulation"> Total Population in the Country</label><br>
-              <label><input type="checkbox" name="socialFactors" id="UnemploymentRate"> Unemployment Rate</label>
-            </div>
-          
-            <div class="factor-group">
-              <h3>Political variables</h3>
-              <label><input type="checkbox" name="politicalFactors" id="PoliticalStability"> Political Stability and Absence of Violence/Terrorism</label>
-            </div>
-          
-            <div class="factor-group">
-              <h3>Economic variables</h3>
-              <label><input type="checkbox" name="economicFactors" id="GDPperCapita"> Gross Domestic Product (GDP) per capita</label>
-            </div>
-          
-            <div class="factor-group">
-              <h3>Environmental variables</h3>
-              <label><input type="checkbox" name="environmentalFactors" id="AgriculturalLand"> Agricultural Land</label>
-            </div>
+    <div class="container">
+      <h1>Pandemic Food security predictor</h1>
+      <p style="background-color: lightgray;padding-top: 10px; padding-bottom: 10px;"><b>Instructions</b>: select your Context, Predictor Variables and click the Calculate button to use</p>
+      <h2>Context</h2>
+      <form id="pandemicForm">
+          <div class="">
+              <label for="pandemic">Pandemic</label>
+              <select id="pandemicSelect" name="pandemic">
+                  <option value="Default"></option>
+                  <option value="Covid">Covid</option>
+              </select>
           </div>
-
-          <div>
-              <button class="calculate-btn" onclick="calculateSeverity()">Calculate</button>
-              <button class="clear-btn" onclick="clearSelections()">Clear</button>
+          <div class="container">
+              <label for="Country">Country</label>
+              <select id="Country" name="Country">
+                  <option value="Default"></option>
+                  <option value="Afghanistan">Afghanistan</option>
+                  <option value="Albania">Albania</option>
+                  <option value="Algeria">Algeria</option>
+                  <option value="Andorra">Andorra</option>
+                  <option value="Angola">Angola</option>
+                  <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                  <option value="Argentina">Argentina</option>
+                  <option value="Armenia">Armenia</option>
+                  <option value="Australia">Australia</option>
+                  <option value="Austria">Austria</option>
+                  <option value="Azerbaijan">Azerbaijan</option>
+                  <option value="Bahamas">Bahamas</option>
+                  <option value="Bahrain">Bahrain</option>
+                  <option value="Bangladesh">Bangladesh</option>
+                  <option value="Barbados">Barbados</option>
+                  <option value="Belarus">Belarus</option>
+                  <option value="Belgium">Belgium</option>
+                  <option value="Belize">Belize</option>
+                  <option value="Benin">Benin</option>
+                  <option value="Bhutan">Bhutan</option>
+                  <option value="Bolivia">Bolivia</option>
+                  <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                  <option value="Botswana">Botswana</option>
+                  <option value="Brazil">Brazil</option>
+                  <option value="Brunei Darussalam">Brunei Darussalam</option>
+                  <option value="Bulgaria">Bulgaria</option>
+                  <option value="Burkina Faso">Burkina Faso</option>
+                  <option value="Burundi">Burundi</option>
+                  <option value="Cabo Verde">Cabo Verde</option>
+                  <option value="Cambodia">Cambodia</option>
+                  <option value="Cameroon">Cameroon</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Central African Republic">Central African Republic</option>
+                  <option value="Chad">Chad</option>
+                  <option value="Chile">Chile</option>
+                  <option value="China">China</option>
+                  <option value="Colombia">Colombia</option>
+                  <option value="Comoros">Comoros</option>
+                  <option value="Congo">Congo</option>
+                  <option value="Costa Rica">Costa Rica</option>
+                  <option value="Croatia">Croatia</option>
+                  <option value="Cuba">Cuba</option>
+                  <option value="Cyprus">Cyprus</option>
+                  <option value="Czech Republic">Czech Republic</option>
+                  <option value="Côte d'Ivoire">Côte d'Ivoire</option>
+                  <option value="Democratic People's Republic of Korea">Democratic People's Republic of Korea</option>
+                  <option value="Democratic Republic of the Congo">Democratic Republic of the Congo</option>
+                  <option value="Denmark">Denmark</option>
+                  <option value="Djibouti">Djibouti</option>
+                  <option value="Dominica">Dominica</option>
+                  <option value="Dominican Republic">Dominican Republic</option>
+                  <option value="Ecuador">Ecuador</option>
+                  <option value="Egypt">Egypt</option>
+                  <option value="El Salvador">El Salvador</option>
+                  <option value="Equatorial Guinea">Equatorial Guinea</option>
+                  <option value="Eritrea">Eritrea</option>
+                  <option value="Estonia">Estonia</option>
+                  <option value="Eswatini">Eswatini</option>
+                  <option value="Ethiopia">Ethiopia</option>
+                  <option value="Fiji">Fiji</option>
+                  <option value="Finland">Finland</option>
+                  <option value="France">France</option>
+                  <option value="Gabon">Gabon</option>
+                  <option value="Gambia">Gambia</option>
+                  <option value="Georgia">Georgia</option>
+                  <option value="Germany">Germany</option>
+                  <option value="Ghana">Ghana</option>
+                  <option value="Greece">Greece</option>
+                  <option value="Grenada">Grenada</option>
+                  <option value="Guatemala">Guatemala</option>
+                  <option value="Guinea">Guinea</option>
+                  <option value="Guinea-Bissau">Guinea-Bissau</option>
+                  <option value="Guyana">Guyana</option>
+                  <option value="Haiti">Haiti</option>
+                  <option value="Honduras">Honduras</option>
+                  <option value="Hungary">Hungary</option>
+                  <option value="Iceland">Iceland</option>
+                  <option value="India">India</option>
+                  <option value="Indonesia">Indonesia</option>
+                  <option value="Iran (Islamic Republic of)">Iran (Islamic Republic of)</option>
+                  <option value="Iraq">Iraq</option>
+                  <option value="Ireland">Ireland</option>
+                  <option value="Israel">Israel</option>
+                  <option value="Italy">Italy</option>
+                  <option value="Jamaica">Jamaica</option>
+                  <option value="Japan">Japan</option>
+                  <option value="Jordan">Jordan</option>
+                  <option value="Kazakhstan">Kazakhstan</option>
+                  <option value="Kenya">Kenya</option>
+                  <option value="Kiribati">Kiribati</option>
+                  <option value="Kuwait">Kuwait</option>
+                  <option value="Kyrgyzstan">Kyrgyzstan</option>
+                  <option value="Lao People's Democratic Republic">Lao People's Democratic Republic</option>
+                  <option value="Latvia">Latvia</option>
+                  <option value="Lebanon">Lebanon</option>
+                  <option value="Lesotho">Lesotho</option>
+                  <option value="Liberia">Liberia</option>
+                  <option value="Libya">Libya</option>
+                  <option value="Liechtenstein">Liechtenstein</option>
+                  <option value="Lithuania">Lithuania</option>
+                  <option value="Luxembourg">Luxembourg</option>
+                  <option value="Madagascar">Madagascar</option>
+                  <option value="Malawi">Malawi</option>
+                  <option value="Malaysia">Malaysia</option>
+                  <option value="Maldives">Maldives</option>
+                  <option value="Mali">Mali</option>
+                  <option value="Malta">Malta</option>                  
+              </select>
           </div>
           <br>
-    
-        <div class="result" id="result">
-          <h2>Result</h2>
-          <p>Graph. prevalence of moderate or severe food insecurity in the population against selected Predicted Variables</p>
-          <p>Moderate | Severe</p>
-          <h2 id="result"></h2>
-        </div>
-
-        <div class="information">
-          <h3>What is the Pandemic Food security predictor?</h3>
-          <p>The Pandemic Food security predictor predicts the Prevalence of Food Insecurity within the country in the time of a pandemic. It is most accurate when based on the Human Development Index and Total Population of the country.</p>
-          <p>This allows the countries to prepare for the extent of impact that the pandemic has on their food security issue, allowing them to act swiftly and accurately.</p>
-          <h3>Problem Statement Introduction</h3>
-          <p><b>How might we predict the prevalence of food insecurity within a country amid a pandemic, given the country’s social, political, and economic factors?</b></p>
-          <p>We aim to categorize this prediction either as <b>Moderate</b> or <b>Severe</b>. This classification allows us to assess the anticipated level of food insecurity within a nation by considering its social, political, and economic landscape amidst a pandemic, offering insight into the likely severity of food insecurity based on their specific socio-political-economic conditions.</p>
-          <h3>Limitations of Model</h3>
-          <p>From the analysis process, we were also able to conclude that not all factors will have an impact on the food security of a country. Many factors that we’ve initially considered turned out to be ineffective in modelling the correlation between the predictor and response variables due to the lack of correlation between them. </p>
-          <p>As such, we’ve narrowed down to just two predictor variables in our multi-regression line, which are HDI and Total population of a country.</p>
-          <p>However, even after identifying the appropriate predictor variables, we have to also note that there are other considerations involved when using the model in decision-making. For example, we have to note that the Human Development Index is based on multiple dimensions and countries with high HDI will likely always be food secure.</p>
-          <p>A possible improvement for future models is that we only take into account countries below a specific range of HDI as these are the countries that are more prone to food insecurity in times of a pandemic.</p>
-          <h3>Conclusion</h3>
-          <p>As such, while our model may be limited in its ability to give the exact number of people experiencing food insecurity in a country during a pandemic, it is still able to give an accurate prediction on the extent of impact that the pandemic will have on their food security based on their HDI and Total population in the country.</p>
-          <h3>Sources</h3>
-          <ul>
-            <li><a href="https://www.fao.org/sustainable-development-goals-data-portal/data/indicators/212-prevalence-of-moderate-or-severe-food-insecurity-in-the-population-based-on-the-food-insecurity-experience-scale/en">Source 1: FAO</a></li>
-            <li><a href="https://hdr.undp.org/data-center/human-development-index#/indicies/HDI">Source 2: HDI</a></li>
-            <li><a href="https://www.fao.org/faostat/en/#data/OA">Source 3: Total Population</a></li>
-            <li><a href="https://tradingeconomics.com/country-list/unemployment-rate">Source 4: Unemployment Rate</a></li>
-            <li><a href="https://data.apps.fao.org/catalog/dataset/06b37520-56c5-4bf6-ae0e-28bebb959139/resource/698fc234-6fb6-44ba-84f7-360a347643f2">Source 5: Political Stability</a></li>
-            <li><a href="https://www.fao.org/3/cb9572en/cb9572en.pdf">Source 6: GDP</a></li>
-            <li><a href="https://www.fao.org/faostat/en/#data/RL">Source 7: Agricultural Land</a></li>
-          </ul>
-        </div>
-
-</body>
+          <h2>Predictor Variables</h2>
+          <div class="input-group">
+              <div class="factor-group">
+                <h3>Social variables</h3>
+                <label><input type="checkbox" name="socialFactors" id="HDI"> Human Development Index (HDI)</label><br>
+                <label><input type="checkbox" name="socialFactors" id="TotalPopulation"> Total Population in the Country</label><br>
+                <label><input type="checkbox" name="socialFactors" id="UnemploymentRate"> Unemployment Rate</label>
+              </div>
+            
+              <div class="factor-group">
+                <h3>Political variables</h3>
+                <label><input type="checkbox" name="politicalFactors" id="PoliticalStability"> Political Stability and Absence of Violence/Terrorism</label>
+              </div>
+            
+              <div class="factor-group">
+                <h3>Economic variables</h3>
+                <label><input type="checkbox" name="economicFactors" id="GDPperCapita"> Gross Domestic Product (GDP) per capita</label>
+              </div>
+            
+              <div class="factor-group">
+                <h3>Environmental variables</h3>
+                <label><input type="checkbox" name="environmentalFactors" id="AgriculturalLand"> Agricultural Land</label>
+              </div>
+            </div>
+  
+            <div>
+                <button class="calculate-btn" onclick="calculateSeverity()">Calculate</button>
+                <button class="clear-btn" onclick="clearSelections()">Clear</button>
+            </div>
+            <br>
+      
+          <div class="result" id="result">
+            <h2>Result</h2>
+            <p>Graph. prevalence of moderate or severe food insecurity in the population against selected Predicted Variables</p>
+            <p>Moderate | Severe</p>
+            <h2 id="result"></h2>
+          </div>
+  
+          <div class="information">
+            <h3>What is the Pandemic Food security predictor?</h3>
+            <p>The Pandemic Food security predictor predicts the Prevalence of Food Insecurity within the country in the time of a pandemic. It is most accurate when based on the Human Development Index and Total Population of the country.</p>
+            <p>This allows the countries to prepare for the extent of impact that the pandemic has on their food security issue, allowing them to act swiftly and accurately.</p>
+            <h3>Problem Statement Introduction</h3>
+            <p><b>How might we predict the prevalence of food insecurity within a country amid a pandemic, given the country’s social, political, and economic factors?</b></p>
+            <p>We aim to categorize this prediction either as <b>Moderate</b> or <b>Severe</b>. This classification allows us to assess the anticipated level of food insecurity within a nation by considering its social, political, and economic landscape amidst a pandemic, offering insight into the likely severity of food insecurity based on their specific socio-political-economic conditions.</p>
+            <h3>Limitations of Model</h3>
+            <p>From the analysis process, we were also able to conclude that not all factors will have an impact on the food security of a country. Many factors that we’ve initially considered turned out to be ineffective in modelling the correlation between the predictor and response variables due to the lack of correlation between them. </p>
+            <p>As such, we’ve narrowed down to just two predictor variables in our multi-regression line, which are HDI and Total population of a country.</p>
+            <p>However, even after identifying the appropriate predictor variables, we have to also note that there are other considerations involved when using the model in decision-making. For example, we have to note that the Human Development Index is based on multiple dimensions and countries with high HDI will likely always be food secure.</p>
+            <p>A possible improvement for future models is that we only take into account countries below a specific range of HDI as these are the countries that are more prone to food insecurity in times of a pandemic.</p>
+            <h3>Conclusion</h3>
+            <p>As such, while our model may be limited in its ability to give the exact number of people experiencing food insecurity in a country during a pandemic, it is still able to give an accurate prediction on the extent of impact that the pandemic will have on their food security based on their HDI and Total population in the country.</p>
+            <h3>Sources</h3>
+            <ul>
+              <li><a href="https://www.fao.org/sustainable-development-goals-data-portal/data/indicators/212-prevalence-of-moderate-or-severe-food-insecurity-in-the-population-based-on-the-food-insecurity-experience-scale/en">Source 1: FAO</a></li>
+              <li><a href="https://hdr.undp.org/data-center/human-development-index#/indicies/HDI">Source 2: HDI</a></li>
+              <li><a href="https://www.fao.org/faostat/en/#data/OA">Source 3: Total Population</a></li>
+              <li><a href="https://tradingeconomics.com/country-list/unemployment-rate">Source 4: Unemployment Rate</a></li>
+              <li><a href="https://data.apps.fao.org/catalog/dataset/06b37520-56c5-4bf6-ae0e-28bebb959139/resource/698fc234-6fb6-44ba-84f7-360a347643f2">Source 5: Political Stability</a></li>
+              <li><a href="https://www.fao.org/3/cb9572en/cb9572en.pdf">Source 6: GDP</a></li>
+              <li><a href="https://www.fao.org/faostat/en/#data/RL">Source 7: Agricultural Land</a></li>
+            </ul>
+          </div>
+  
+  </body>

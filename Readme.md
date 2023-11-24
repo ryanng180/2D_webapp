@@ -5,38 +5,18 @@
 **Table of Contents**
 
 - [Pandemic Food security predictor](#Pandemic Food security predictor)
-  - [Setup](#setup)
-    - [Install Git](#install-git)
-    - [Downloading Repository](#downloading-repository)
-    - [Create Virtual Environment](#create-virtual-environment)
-    - [Using Transcrypt](#using-transcrypt)
-    - [Run Flask](#run-flask)
-      - [Vocareum](#vocareum)
-      - [Local Computer](#local-computer)
+  - [Create Virtual Environment](#create-virtual-environment)
+  - [Run Flask](#run-flask)
+    - [Vocareum](#vocareum)
+    - [Local Computer](#local-computer)
   - [Instructions for webapp](#instructions-for-webapp)
-    - [Expected Input](#expected-input)
-    - [Expected Output](#expected-output)
-    - [Another prediction](#another-prediction)
+  - [Expected Input](#expected-input)
+  - [Expected Output](#expected-output)
+  - [Another prediction](#another-prediction)
 
 <!-- markdown-toc end -->
 
 ## Setup
-
-### Install Git
-
-You need to have Git to do the project. Download and install the software according to your OS:
-
-- Windows: [Git for Windows](https://git-scm.com/download/win)
-- Mac OS: [Git for MacOS](https://git-scm.com/download/mac)
-
-### Downloading Repository
-
-Clone the mini project repository from Github. On your terminal or Git Bash, type the following:
-
-```shell
-cd Downloads
-git clone https://github.com/Data-Driven-World/d2w_mini_projects
-```
 
 ### Create Virtual Environment
 
@@ -72,6 +52,12 @@ First make sure that you have installed `pipenv` package.
 
 ```shell
 python -m pip install --user pipenv
+```
+
+Install the required packages from requirements.txt:
+
+```shell
+pip install -r requirements.txt
 ```
 
 **If you are running the above commands in Vocareum, you may encounter the following message at the end of the installation.**
@@ -140,65 +126,6 @@ exit
 ```
 
 All the steps assumes you are in the virtualenv shell.
-
-### Using Transcrypt
-
-Javascript is the commonly used language for front-end web development. However, since this course only covers Python. We will use `Transcrypt` library which can compile and translate Python script into a Javascript file. To compile `library.py`, first we need to go into the `static` folder.
-
-Windows:
-
-```dos
-> cd %USERPROFILE\Downloads\2D_webapp\app\static
-> dir
-```
-
-Unix/MacOS:
-
-```shell
-$ cd ~/Downloads/2D_webapp/app/static
-$ ls
-```
-
-The last command will list the file in that folder, and you should see:
-
-```shell
-library.py
-```
-
-Run Transcrypt on `library.py`:
-
-```shell
-python -m transcrypt -b -n library
-```
-
-The option `-b` means to build the javascript library. You can use `--help` for more options. Once it is done, you should be able to see a folder called `__target__` containing several files. To see the content of that folder:
-
-Windows:
-
-```dos
-> dir
-> dir __target__
-```
-
-Unix/MacOS:
-
-```shell
-$ ls
-$ ls __target__
-```
-
-The output should be something like the following:
-
-```shell
-__target__/
-  library.js
-  library.project
-  math.js
-  org.transcrypt.__runtime__.js
-  random.js
-```
-
-You should see `library.js` created inside this folder.
 
 ### Run Flask
 
@@ -270,3 +197,6 @@ A Result produced.
 ## Another prediction
 
 please use the Clear button then repeat steps for Expected Input. Or you can manually reconfigure the Expected Inputs directly.
+![Alt text](image.png)
+![Alt text](image-1.png)
+![Alt text](image-2.png)
